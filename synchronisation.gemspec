@@ -5,7 +5,7 @@ require_relative "lib/synchronisation/version"
 Gem::Specification.new do |spec|
   spec.name = "synchronisation"
   spec.version = Synchronisation::VERSION
-  spec.authors = ["Poutchy"]
+  spec.authors = %w[Poutchy Sakura2373]
   spec.email = ["enzo.mauti@laposte.net"]
 
   spec.summary = "Rendu du projet de synchronisation"
@@ -36,4 +36,5 @@ Gem::Specification.new do |spec|
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
