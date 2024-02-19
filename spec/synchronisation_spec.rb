@@ -4,8 +4,4 @@ RSpec.describe Synchronisation do
   it "has a version number" do
     expect(Synchronisation::VERSION).not_to be nil
   end
-
-  it "does something useful" do
-    expect(true).to eq(true)
-  end
 end

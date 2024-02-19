@@ -2,9 +2,18 @@
 
 require_relative "synchronisation/version"
 require_relative "synchronisation/joueur"
+require_relative "synchronisation/arbitre"
+require_relative "synchronisation/arbitre_table"
+require_relative "synchronisation/arbitre_terrain"
+require_relative "synchronisation/match"
+require_relative "synchronisation/tournoi"
 
 module Synchronisation
   class Joueur < Joueur; end
+  class Arbitre < Arbitre; end
+  class ArbitreTable < ArbitreTable; end
+  class ArbitreTerrain < ArbitreTerrain; end
+  class Match < Match; end
+  class Tournoi < Tournoi; end
   class Error < StandardError; end
-  # Your code goes here...
 end
