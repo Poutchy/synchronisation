@@ -9,6 +9,7 @@ class Match
     @joueur2 = joueur2
     @winner = nil
     @timer = nil
+    @terrain = nil
   end
 
   def to_s
