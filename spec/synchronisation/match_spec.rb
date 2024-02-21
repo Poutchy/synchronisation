@@ -10,7 +10,7 @@ RSpec.describe Match do
     @m = Match.new @j1, @j2
   end
   it "can be printed" do
-    expect(@m.to_s).to eql "Match: #{@j1} VS #{@j2}"
+    expect(@m.to_s).to eql "Match: #{@j1} VS #{@j2}\n" + "Vainqueur #{@m.winner} en #{@m.timer.div(60)} minutes et #{@m.timer%60} secondes"
   end
 
   it "have a winner" do
