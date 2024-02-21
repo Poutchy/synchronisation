@@ -7,7 +7,7 @@ class Match
   def initialize(joueur1, joueur2)
     @joueur1 = joueur1
     @joueur2 = joueur2
-    @winner = null
+    @winner = nil
   end
 
   def to_s
