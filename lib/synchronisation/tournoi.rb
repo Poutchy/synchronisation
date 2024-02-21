@@ -2,10 +2,11 @@
 
 # contient les informations et la logique d'un tournoi
 class Tournoi
-  attr_reader :joueurs
+  attr_reader :joueurs, :terrains
 
-  def initialize(joueurs)
+  def initialize(joueurs, terrains)
     @joueurs = joueurs
+    @terrains = terrains
   end
 
   def run
