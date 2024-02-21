@@ -11,4 +11,4 @@ gem "rspec", "~> 3.0"
 
 gem "rubocop", "~> 1.21"
 
-gem 'concurrent-ruby', require: 'concurrent'
+gem "concurrent-ruby", require: "concurrent"
