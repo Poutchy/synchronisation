@@ -13,7 +13,9 @@ class Match
   end
 
   def to_s
-    "Match: #{joueur1} VS #{joueur2}\n" + "Vainqueur #{winner} en #{timer.div(60)} minutes et #{timer%60} secondes"
+    res = "Match: #{joueur1} VS #{joueur2}\n"
+    res += "Vainqueur #{winner} en #{timer.div(60)} minutes et #{timer % 60} secondes"
+    res
   end
 
   def winner
