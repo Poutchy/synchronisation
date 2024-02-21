@@ -14,7 +14,7 @@ class Match
   end
 
   def winner
-    winner || choose_winner
+    winner ||= choose_winner
   end
 
   def choose_winner
