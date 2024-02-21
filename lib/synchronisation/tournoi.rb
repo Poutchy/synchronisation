@@ -25,7 +25,7 @@ class Tournoi
 
   def create_matchs
     matchs = []
-    matchs.add Match.new joueurs.shift joueurs.shift until joueurs.size > 1
+    matchs << Match.new(joueurs.shift, joueurs.shift, terrains) until joueurs.size < 2
     matchs
   end
 
@@ -34,5 +34,6 @@ class Tournoi
     matchs.each do |m|
       threads << Thread.new { Thread.current[:winner] = m.run }
     end
+    threads
   end
 end

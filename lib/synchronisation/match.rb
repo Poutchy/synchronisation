@@ -32,7 +32,7 @@ class Match
   end
 
   def choose_timer
-    Random.rand(180)
+    3
   end
 
   def run
@@ -42,6 +42,8 @@ class Match
   end
 
   def choose_terrain(terrains)
-    terrains.sample.acquire
+    t = terrains.sample
+    t.try_acquire(1)
+    t
   end
 end
