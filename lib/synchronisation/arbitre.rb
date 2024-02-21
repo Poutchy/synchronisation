@@ -2,12 +2,13 @@
 
 # contient les informations et la logique des arbitres
 class Arbitre
-  attr_reader :nom, :prenom, :terrain
+  attr_accessor :terrain
+  attr_reader :nom, :prenom
 
-  def initialize(nom, prenom, terrain)
+  def initialize(nom, prenom)
     @nom = nom
     @prenom = prenom
-    @terrain = terrain
+    @terrain = nil
   end
 
   def to_s

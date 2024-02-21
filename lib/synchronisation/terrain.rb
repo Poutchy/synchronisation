@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'concurrent/semaphore'
+require "concurrent-ruby"
 
 # contient les informations et la logique des arbitres
-class Terrain< Semaphore
+class Terrain < Concurrent::Semaphore
   attr_reader :arbitres
 
-  def initialize(nb, arbitres)
+  def initialize(count, arbitres)
     @arbitres = arbitres
-    super
+    super(count)
   end
 end

@@ -2,14 +2,14 @@
 
 # contient les informations et la logique d'un match
 class Match
-  attr_reader :joueur1, :joueur2
+  attr_reader :joueur1, :joueur2, :terrain
 
-  def initialize(joueur1, joueur2)
+  def initialize(joueur1, joueur2, terrains)
     @joueur1 = joueur1
     @joueur2 = joueur2
     @winner = nil
     @timer = nil
-    @terrain = nil
+    @terrain = choose_terrain terrains
   end
 
   def to_s
@@ -33,5 +33,15 @@ class Match
 
   def choose_timer
     Random.rand(180)
+  end
+
+  def run
+    sleep(timer)
+    terrain.release
+    winner
+  end
+
+  def choose_terrain(terrains)
+    terrains.sample.acquire
   end
 end
