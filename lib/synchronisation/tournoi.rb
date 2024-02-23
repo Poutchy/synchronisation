@@ -23,7 +23,16 @@ class Tournoi
 
   private
 
-  def create_matchs
+  def first_round
+    matchs = create_matchs
+    threads = creates_threads matchs
+    threads.each do |t|
+      t.join
+      joueurs << t[:winner]
+    end
+  end
+
+  def create_matchs tps_attente = 0
     matchs = []
     matchs << Match.new(joueurs.shift, joueurs.shift, terrains) until joueurs.size < 2
     matchs

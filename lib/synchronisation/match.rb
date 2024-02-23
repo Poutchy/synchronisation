@@ -32,18 +32,21 @@ class Match
   end
 
   def choose_timer
-    3
+    rand(2..30)
   end
 
   def run
+    puts timer
     sleep(timer)
+    puts "Match terminé"
+    puts self
     terrain.release
     winner
   end
 
   def choose_terrain(terrains)
     t = terrains.sample
-    t.try_acquire(1)
+    t = choose_terrain(terrains) if !t.try_acquire(1, 30)
     t
   end
 end
