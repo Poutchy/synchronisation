@@ -3,7 +3,8 @@
 require "synchronisation/match"
 require "synchronisation/joueur"
 require "synchronisation/terrain"
-require "synchronisation/arbitre"
+require "synchronisation/arbitre_table"
+require "synchronisation/arbitre_terrain"
 require "synchronisation/tournoi"
 
 def create_joueur
@@ -18,23 +19,39 @@ def create_joueur
   [j1, j2, j3, j4, j5, j6, j7, j8]
 end
 
+def a_t
+  ArbitreTable.new "Lagaffe", "Gaston"
+end
+
+def l1
+  a11 = ArbitreTerrain.new "Baqui", "Hanma"
+  a12 = ArbitreTerrain.new "Baquo", "Hanmo"
+  a13 = ArbitreTerrain.new "Baquu", "Hanmi"
+  [a11, a12, a13]
+end
+
+def l2
+  a21 = ArbitreTerrain.new "Tobey", "Mcgui"
+  a22 = ArbitreTerrain.new "Tobu", "Mcguu"
+  a23 = ArbitreTerrain.new "Toba", "Mcgua"
+  [a21, a22, a23]
+end
+
+def l3
+  a31 = ArbitreTerrain.new "Maco", "Tapo"
+  a32 = ArbitreTerrain.new "Maci", "Trapon"
+  a33 = ArbitreTerrain.new "Muca", "Trpua"
+  [a31, a32, a33]
+end
+
 def create_terrain
-  a11 = Arbitre.new "Baqui", "Hanma"
-  a12 = Arbitre.new "Baquo", "Hanmo"
-  a13 = Arbitre.new "Baquu", "Hanmi"
-  a21 = Arbitre.new "Tobey", "Mcgui"
-  a22 = Arbitre.new "Tobu", "Mcguu"
-  a23 = Arbitre.new "Toba", "Mcgua"
-  a31 = Arbitre.new "Maco", "Tapo"
-  a32 = Arbitre.new "Maci", "Trapon"
-  a33 = Arbitre.new "Muca", "Trpua"
-  [Terrain.new(1, [a11, a12, a13]), Terrain.new(1, [a21, a22, a23]), Terrain.new(1, [a31, a32, a33])]
+  [Terrain.new(l1, a_t), Terrain.new(l2, a_t), Terrain.new(l3, a_t)]
 end
 
 def create
-  js = create_joueur
-  t = create_terrain
-  Tournoi.new js, t
+  joueurs = create_joueur
+  terrains = create_terrain
+  Tournoi.new joueurs, terrains
 end
 
 RSpec.describe Tournoi do
