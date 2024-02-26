@@ -2,19 +2,24 @@
 
 # contient les informations et la logique d'un match
 class Match
-  attr_reader :joueur1, :joueur2, :terrain
+  attr_reader :joueur1, :joueur2
+  attr_accessor :terrain
 
   def initialize(joueur1, joueur2, terrains)
     @joueur1 = joueur1
     @joueur2 = joueur2
     @winner = nil
     @timer = nil
-    @terrain = choose_terrain terrains
+    @terrains = terrains
+    @terrain = nil
   end
 
   def to_s
-    res = "Match: #{joueur1} VS #{joueur2}\n"
-    res += "Vainqueur #{winner} en #{timer.div(60)} minutes et #{timer % 60} secondes"
+    res = "Match terminé\n" if @winner
+    res = "Match: #{joueur1} VS #{joueur2}\n" unless @winner
+    res += "Match: #{joueur1} VS #{joueur2}\n" if @winner
+    res += "Terrain: #{@terrain.in_match}\n"
+    res += "Vainqueur #{@winner} en #{timer.div(60)} minutes et #{timer % 60} secondes" if @winner
     res
   end
 
@@ -32,21 +37,25 @@ class Match
   end
 
   def choose_timer
-    rand(2..30)
+    rand(180)
   end
 
   def run
-    puts timer
-    sleep(timer)
-    puts "Match terminé"
+    @terrain = choose_terrain
+    @terrain.def_arbitre
     puts self
-    terrain.release
+    sleep(timer)
+    winner
+    puts self
+    @terrain.end_match
+    @terrain.release
+    sleep(20)
     winner
   end
 
-  def choose_terrain(terrains)
-    t = terrains.sample
-    t = choose_terrain(terrains) if !t.try_acquire(1, 30)
+  def choose_terrain
+    t = @terrains.sample
+    t = choose_terrain unless t.try_acquire(1, 2)
     t
   end
 end

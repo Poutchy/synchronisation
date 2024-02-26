@@ -10,20 +10,14 @@ class Tournoi
   end
 
   def run
-    until joueurs.size == 1
-      matchs = create_matchs
-      threads = creates_threads matchs
-      threads.each do |t|
-        t.join
-        joueurs << t[:winner]
-      end
-    end
+    puts self
+    round until joueurs.size == 1
     joueurs.first
   end
 
   private
 
-  def first_round
+  def round
     matchs = create_matchs
     threads = creates_threads matchs
     threads.each do |t|
@@ -32,7 +26,7 @@ class Tournoi
     end
   end
 
-  def create_matchs tps_attente = 0
+  def create_matchs
     matchs = []
     matchs << Match.new(joueurs.shift, joueurs.shift, terrains) until joueurs.size < 2
     matchs
@@ -44,5 +38,15 @@ class Tournoi
       threads << Thread.new { Thread.current[:winner] = m.run }
     end
     threads
+  end
+
+  def to_s
+    res = "Tournoi avec #{joueurs.size} joueurs et #{terrains.size} terrains"
+    res += "\nJoueurs: #{joueurs.join(", ")}"
+    res += "\nTerrains:\n"
+    terrains.each do |t|
+      res += "  #{t}\n"
+    end
+    res
   end
 end
