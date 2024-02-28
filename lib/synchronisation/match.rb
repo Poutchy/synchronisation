@@ -37,7 +37,7 @@ class Match
   end
 
   def choose_timer
-    rand(180)
+    rand(10..180)
   end
 
   def run
@@ -55,7 +55,7 @@ class Match
 
   def choose_terrain
     t = @terrains.sample
-    t = choose_terrain unless t.try_acquire(1, 2)
+    t = choose_terrain unless t.try_acquire(1, 10)
     t
   end
 end

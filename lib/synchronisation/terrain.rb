@@ -4,7 +4,7 @@ require "concurrent-ruby"
 
 # contient les informations et la logique des arbitres
 class Terrain < Concurrent::Semaphore
-  attr_reader :arbitres, :arbitre_table
+  attr_reader :arbitres, :arbitre_table, :arbitre_en_cours
 
   def initialize(arbitres, arbitre_table)
     @arbitres = arbitres
@@ -23,14 +23,13 @@ class Terrain < Concurrent::Semaphore
     arbitre_table.acquire(2)
   end
 
-  def choose_arbitre
-    a = arbitres.sample
-    a = choose_arbitre unless a.try_acquire(2, 2)
+  def choose_arbitre(id = 0)
+    a = arbitres[id]
+    a = choose_arbitre id + 1 unless a.try_acquire(2, 1)
     a
   end
 
   def end_match
-    @arbitre_en_cours = nil
     arbitres.each do |a|
       a.release(1) if a.available_permits < 1
     end
