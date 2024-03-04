@@ -17,19 +17,19 @@ def a_t
   ArbitreTable.new "Lagaffe", "Gaston"
 end
 
-def l1 arb
+def l1(arb)
   arb.create
 end
 
-def l2 arb
+def l2(arb)
   arb.create
 end
 
-def l3 arb
+def l3(arb)
   arb.create
 end
 
-def create_terrain arb
+def create_terrain(arb)
   [Terrain.new(l1(arb), a_t), Terrain.new(l2(arb), a_t), Terrain.new(l3(arb), a_t)]
 end
 
