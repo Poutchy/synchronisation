@@ -19,11 +19,20 @@ class SetupArbitreTerrain
     @arbitres << ArbitreTerrain.new("Mouse", "Minnie")
     @arbitres << ArbitreTerrain.new("Eeyore", "Bourriquet")
     @arbitres << ArbitreTerrain.new("Chalamet", "Timothé")
+    @arbitres << ArbitreTerrain.new("Yaeger", "Eren")
+    @arbitres << ArbitreTerrain.new("Ackerman", "Mikasa")
+    @arbitres << ArbitreTerrain.new("Okumura", "Rin")
+    @arbitres << ArbitreTerrain.new("Moriarty", "William")
+    @arbitres << ArbitreTerrain.new("Moran", "Sebastian")
+    @arbitres << ArbitreTerrain.new("Bond", "James")
+    @arbitres << ArbitreTerrain.new("Holmes", "Sherlock")
+    @arbitres << ArbitreTerrain.new("Holmes", "Mycroft")
+    @arbitres << ArbitreTerrain.new("Moriarty", "Albert")
   end
 
   def create
     res = []
-    @arbitres.sort_by{rand}
+    @arbitres.shuffle!
     3.times do
       res << @arbitres.shift
     end
