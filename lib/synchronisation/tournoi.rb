@@ -11,6 +11,8 @@ class Tournoi
     @semaphore_terrains = Concurrent::Semaphore.new(terrains.size)
   end
 
+  # lance le tournoi
+  # @return [Joueur] le vainqueur du tournoi
   def run
     puts self
     round until joueurs.size == 1
@@ -20,6 +22,7 @@ class Tournoi
 
   private
 
+  # lance un round du tournoi
   def round
     puts "Round #{@nb_round += 1}"
     matchs = create_matchs
@@ -31,12 +34,17 @@ class Tournoi
     puts "\nJoueurs restants: #{joueurs.join(", ")}"
   end
 
+  # crée les matchs du round
+  # @return [Array<Match>] les matchs du round
   def create_matchs
     matchs = []
     matchs << Match.new(joueurs.shift, joueurs.shift, terrains, @semaphore_terrains) until joueurs.size < 2
     matchs
   end
 
+  # crée les threads pour les matchs
+  # @param [Array<Match>] matchs les matchs à lancer
+  # @return [Array<Thread>] les threads des matchs
   def creates_threads(matchs)
     threads = []
     matchs.each do |m|

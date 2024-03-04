@@ -8,7 +8,6 @@ class Arbitre < Concurrent::Semaphore
   def initialize(nom, prenom)
     @nom = nom
     @prenom = prenom
-    @terrain = nil
     super(3)
   end
 

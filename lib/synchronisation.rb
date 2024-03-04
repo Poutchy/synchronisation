@@ -18,6 +18,6 @@ module Synchronisation
   class Match < Match; end
   class Tournoi < Tournoi; end
   class SetupJoueur < SetupJoueur; end
-  class SetupArbitre < SetupArbitre; end
+  class SetupArbitreTerrain < SetupArbitreTerrain; end
   class Error < StandardError; end
 end
