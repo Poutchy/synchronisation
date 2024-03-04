@@ -30,7 +30,7 @@ Une fois cela fait, installez la gem en tant que telles dans votre système:
 
 ## Usage
 
-Cette gem vous permet l'usage de toutes les classes décrites dans sa librairie, et le fichier de tests de tournoi permet un premier apperçu de son fonctionnement.
+Cette gem vous permet l'usage de toutes les classes décrites dans sa librairie, et le fichier de tests de tournoi permet un apperçu de son fonctionnement.
 
 ## Development
 
