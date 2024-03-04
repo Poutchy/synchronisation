@@ -22,7 +22,7 @@ RSpec.describe Match do
   end
   it "can be printed" do
     @m.terrain = @t
-    res = "Match: #{@j1} VS #{@j2}\n"
+    res = "\nMatch: #{@j1} VS #{@j2}\n"
     res += "Terrain: #{@t.in_match}\n"
     expect(@m.to_s).to eql res
   end
@@ -30,7 +30,7 @@ RSpec.describe Match do
   it "can be printed with winner" do
     @m.winner
     @m.terrain = @t
-    res = "Match terminé\n"
+    res = "\nMatch terminé\n"
     res += "Match: #{@j1} VS #{@j2}\n"
     res += "Terrain: #{@t.in_match}\n"
     res += "Vainqueur #{@m.winner} en #{@m.timer.div(60)} minutes et #{@m.timer % 60} secondes"
