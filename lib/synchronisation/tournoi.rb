@@ -50,7 +50,7 @@ class Tournoi
     res += "\nJoueurs: #{joueurs.join(", ")}"
     res += "\nTerrains:\n"
     terrains.each do |t|
-      res += "  #{t}\n"
+      res += "  #{t}\n\n"
     end
     res
   end
