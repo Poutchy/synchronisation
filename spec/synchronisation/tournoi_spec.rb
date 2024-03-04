@@ -17,25 +17,26 @@ def a_t
   ArbitreTable.new "Lagaffe", "Gaston"
 end
 
-def l1
-  SetupArbitreTerrain.new.create
+def l1 arb
+  arb.create
 end
 
-def l2
-  SetupArbitreTerrain.new.create
+def l2 arb
+  arb.create
 end
 
-def l3
-  SetupArbitreTerrain.new.create
+def l3 arb
+  arb.create
 end
 
-def create_terrain
-  [Terrain.new(l1, a_t), Terrain.new(l2, a_t), Terrain.new(l3, a_t)]
+def create_terrain arb
+  [Terrain.new(l1(arb), a_t), Terrain.new(l2(arb), a_t), Terrain.new(l3(arb), a_t)]
 end
 
 def create
+  arbitres = SetupArbitreTerrain.new
   joueurs = create_joueur
-  terrains = create_terrain
+  terrains = create_terrain arbitres
   Tournoi.new joueurs, terrains
 end
 
