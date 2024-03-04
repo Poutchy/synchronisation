@@ -1,24 +1,36 @@
 # Synchronisation
 
-TODO: Delete this and the text below, and describe your gem
+Rendu du cours d'info606: Synchronisation des processus.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/synchronisation`. To experiment with that code, run `bin/console` for an interactive prompt.
+Rendu réalisé par Mauti Enzo et Vaglio Lisa
+
+Notre projet consiste en la création d'un système émulant un ou plusieurs tournois de judo.
+
+Le rendu est composé des classes contenue dans le répertoire `lib/synchronisation`.
+
+Chaque classe contient un descriptif de ce à quoi elle correspond et comment chacune fonctionne.
+
+Les classes contenues dans le répertoire `lib/synchronisation/setup` permettent de créer rapidement des tests pour les personnes voulant essayer cette gem.
+
+Quelques règles que nous avons appliqué à ce projet pour éviter les bugs et problèmes de compréhension:
+
+- Lors d'un tournoi de judo, il y a généralement 2 ou 3 arbitres qui gèrent le match sur le terrain, et 1 à 2 arbitres qui gèrent la table d'arbitrage. Les arbitres sur le terrain (que nous avons appeler arbitres de terrains) se relaient pour arbitrer un à 2 matchs de suite. Pour rendre la compréhension plus simple, nous avons décider que, quoi qu'il se passe, 3 arbitres de terrains sont présents et sont assignés définitivement à un terrain. Un seul arbitre de table sera présent. Les arbitres se relaient tous les matchs.
+- Les tournois sont TOUS des tournois à éliminations directe. Pas de règles de repéchage, les matchs se font dans l'ordre et chaque tours attend que le tour précedent ai entièrement finis.
+- Les joueurs doivent attendre un certains temps entre les matchs, nous avons rendu ce temps obligatoire pour tous. Ceci correspond avec les paramètres actuels à un délei de 20 secondes entre chaque tour (délai décompté entre la fin du dernier match d'un tour et le début du tour suivant).
 
 ## Installation
 
-TODO: Replace `synchronisation` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Installez les fichiers de la gem avec la commande suivante:
 
-Install the gem and add to the application's Gemfile by executing:
+    $ git clone https://github.com/Poutchy/synchronisation.git
 
-    $ bundle add synchronisation
+Une fois cela fait, installez la gem en tant que telles dans votre système:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install synchronisation
+    $ gem install --local path_to_gem/filename.gem
 
 ## Usage
 
-TODO: Write usage instructions here
+Cette gem vous permet l'usage de toutes les classes décrites dans sa librairie, et le fichier de tests de tournoi permet un premier apperçu de son fonctionnement.
 
 ## Development
 
