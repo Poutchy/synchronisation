@@ -7,6 +7,8 @@ require_relative "synchronisation/arbitre_table"
 require_relative "synchronisation/arbitre_terrain"
 require_relative "synchronisation/match"
 require_relative "synchronisation/tournoi"
+require_relative "synchronisation/setup/setup_joueur"
+require_relative "synchronisation/setup/setup_arbitre"
 
 module Synchronisation
   class Joueur < Joueur; end
@@ -15,5 +17,7 @@ module Synchronisation
   class ArbitreTerrain < ArbitreTerrain; end
   class Match < Match; end
   class Tournoi < Tournoi; end
+  class SetupJoueur < SetupJoueur; end
+  class SetupArbitre < SetupArbitre; end
   class Error < StandardError; end
 end
