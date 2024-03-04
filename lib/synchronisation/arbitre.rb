@@ -9,7 +9,7 @@ class Arbitre < Concurrent::Semaphore
     @nom = nom
     @prenom = prenom
     @terrain = nil
-    super(2)
+    super(3)
   end
 
   def to_s

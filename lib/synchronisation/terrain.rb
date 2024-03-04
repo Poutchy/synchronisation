@@ -20,24 +20,24 @@ class Terrain < Concurrent::Semaphore
 
   def def_arbitre
     @arbitre_en_cours = choose_arbitre
-    arbitre_table.acquire(2)
+    arbitre_table.acquire(3)
   end
 
   def choose_arbitre(id = 0)
     a = arbitres[id]
-    a = choose_arbitre id + 1 unless a.try_acquire(2, 1)
+    a = choose_arbitre id + 1 unless a.try_acquire(3, 1)
     a
   end
 
   def end_match
     arbitres.each do |a|
-      a.release(1) if a.available_permits < 1
+      a.release(1) if a.available_permits < 3
     end
-    arbitre_table.release(2)
+    arbitre_table.release(3)
   end
 
   def to_s
-    r = "Terrain:\nArbitres de terrains:\n"
+    r = "Arbitres de terrains:\n"
     arbitres.each do |a|
       r += "  #{a}\n"
     end
