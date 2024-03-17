@@ -23,7 +23,6 @@ Dans la classe Tournoi, nous avons utilisé des sémaphores pour contrôler l'ac
 Nous avons également utilisé des threads pour que les matchs s'exécutent en parallèle des autres. 
 Dans la classe Terrain, nous avons utilisé des sémaphores pour assigner les arbitres à un seul match à la fois. De plus, le sémaphore associé au terrain lui-même garantit qu'un seul match peut se dérouler sur ce terrain à la fois. 
 Dans la classe Match, nous avons utilisé des sémaphores pour gérer les terrains. Lorsqu'un match est prêt à être joué, il doit obtenir un accès aux terrains. Le terrain est libéré une fois le match terminé.
-Dans la classe Joueur, nous avons utilisé des sémaphores pour synchroniser l'accès aux ressources partagées, les données des joueurs. Chaque joueur est associé à un sémaphore qui garantit un accès exclusif à ses données. 
 
 ## Installation
 
