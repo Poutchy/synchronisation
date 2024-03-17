@@ -3,14 +3,13 @@
 require "concurrent-ruby"
 
 # contient les informations d'un joueur
-class Joueur < Concurrent::Semaphore
+class Joueur
   attr_accessor :nom, :prenom, :age
 
   def initialize(nom, prenom, age)
     @nom = nom
     @prenom = prenom
     @age = age
-    super(1)
   end
 
   def to_s
