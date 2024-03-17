@@ -16,7 +16,14 @@ Quelques règles que nous avons appliqué à ce projet pour éviter les bugs et 
 
 - Lors d'un tournoi de judo, il y a généralement 2 ou 3 arbitres qui gèrent le match sur le terrain, et 1 à 2 arbitres qui gèrent la table d'arbitrage. Les arbitres sur le terrain (que nous avons appeler arbitres de terrains) se relaient pour arbitrer un à 2 matchs de suite. Pour rendre la compréhension plus simple, nous avons décider que, quoi qu'il se passe, 3 arbitres de terrains sont présents et sont assignés définitivement à un terrain. Un seul arbitre de table sera présent. Les arbitres se relaient tous les matchs.
 - Les tournois sont TOUS des tournois à éliminations directe. Pas de règles de repéchage, les matchs se font dans l'ordre et chaque tours attend que le tour précedent ai entièrement finis.
-- Les joueurs doivent attendre un certains temps entre les matchs, nous avons rendu ce temps obligatoire pour tous. Ceci correspond avec les paramètres actuels à un délei de 20 secondes entre chaque tour (délai décompté entre la fin du dernier match d'un tour et le début du tour suivant).
+- Les joueurs doivent attendre un certains temps entre les matchs, nous avons rendu ce temps obligatoire pour tous. Ceci correspond avec les paramètres actuels à un délai de 20 secondes entre chaque tour (délai décompté entre la fin du dernier match d'un tour et le début du tour suivant).
+
+Pour le bon fonctionnement du projet nous avons utilisé des sémaphores et des threads. 
+Dans la classe Tournoi, nous avons utilisé des sémaphores pour contrôler l'accès aux terrains disponibles pour les matchs. Quand un match commence il obtient l'accès à un terrain qu'il libère une fois terminé rendant le terrain de nouveau disponible.
+Nous avons également utilisé des threads pour que les matchs s'exécutent en parallèle des autres. 
+Dans la classe Terrain, nous avons utilisé des sémaphores pour assigner les arbitres à un seul match à la fois. De plus, le sémaphore associé au terrain lui-même garantit qu'un seul match peut se dérouler sur ce terrain à la fois. 
+Dans la classe Match, nous avons utilisé des sémaphores pour gérer les terrains. Lorsqu'un match est prêt à être joué, il doit obtenir un accès aux terrains. Le terrain est libéré une fois le match terminé.
+Dans la classe Joueur, nous avons utilisé des sémaphores pour synchroniser l'accès aux ressources partagées, les données des joueurs. Chaque joueur est associé à un sémaphore qui garantit un accès exclusif à ses données. 
 
 ## Installation
 
